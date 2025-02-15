@@ -6,7 +6,7 @@ on:
     branches:
       - dev
       - hom
-      - prod
+      - main
     paths-ignore:
       - ".github/**"
 
