@@ -1,13 +1,17 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { DynamoDBSetup } from './dynamodb-setup';
+import { LambdaSetup } from './lambda-setup';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class SvcUserStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
     //---------Setup DynamoDB----------//
-    const dynamodbSetup = new DynamoDBSetup(this)
-    dynamodbSetup.setupUserTable()
+    const dynamodbSetup = new DynamoDBSetup(this);
+    dynamodbSetup.setupUserTable();
+
+    const lambdaSetup = new LambdaSetup(this);
+    lambdaSetup.setupLambdas(dynamodbSetup.getUserTable());
   }
 }

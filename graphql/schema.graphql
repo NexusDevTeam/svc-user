@@ -1,0 +1,19 @@
+input UserInput{
+    id:String!
+    name:String!
+    email:String!
+    password:String!
+}
+
+type User{
+    id:String!
+    name:String!
+    email:String!
+    password:String!
+}
+type Query{
+    
+}
+type Mutation{
+    createUser(input:UserInput):User
+}
